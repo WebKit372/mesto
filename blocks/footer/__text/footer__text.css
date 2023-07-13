@@ -8,3 +8,8 @@
     margin: 0;
     padding-bottom: 60px;
 }
+@media screen and (max-width: 320px){
+    .footer__text{
+        padding-bottom: 36px;
+    }
+}

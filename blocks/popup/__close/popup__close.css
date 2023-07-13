@@ -12,3 +12,11 @@
     cursor: pointer;
     opacity: 0.6;
 }
+@media screen and (max-width: 768px){
+    .popup__close{
+        top: -40px;
+        right: 0;
+        width: 25px;
+        height: 25px;
+    }
+}

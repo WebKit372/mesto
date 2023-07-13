@@ -7,6 +7,7 @@
     margin-bottom: 9px;
     background-color: black;
     transition: opacity 0.2s ease-in;
+    padding: 0;
 }
 @media screen and (max-width: 320px){
     .profile__edit-button{

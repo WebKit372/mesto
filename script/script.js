@@ -1,26 +1,23 @@
-let open = document.querySelector('.profile__add-button');
 let popup = document.querySelector('.popup');
 let close = document.querySelector('.popup__close');
-let save = document.querySelector('.popup__save')
+let save = document.querySelector('.popup__page')
 let edit = document.querySelector('.profile__edit-button');
-let popup__name = document.querySelector('.popup__name');
-let popup__hobby = document.querySelector('.popup__hobby');
-let profile__name = document.querySelector('.profile__name');
-let profile__hobby = document.querySelector('.profile__hobby');
-let like__button = document.querySelectorAll('.elements__button')
-let elements = document.querySelector('.elements');
-let footer = document.querySelector('.footer');
+let popupName = document.querySelector('.popup__text:first-of-type');
+let popupHobby = document.querySelector('.popup__text:last-of-type');
+let profileName = document.querySelector('.profile__name');
+let profileHobby = document.querySelector('.profile__hobby');
 
 function openPopup(){
     popup.classList.toggle('popup_active');
-    popup__name.setAttribute('placeholder',profile__name.textContent);
-    popup__hobby.setAttribute('placeholder',profile__hobby.textContent);
+    popupName.value = profileName.textContent;
+    popupHobby.value = profileHobby.textContent;
 }
-function editPopup(){
+function handleFormSubmit(evt){
+    evt.preventDefault()
     popup.classList.toggle('popup_active');
-    profile__name.textContent = popup__name.value;
-    profile__hobby.textContent = popup__hobby.value;
+    profileName.textContent = popupName.value;
+    profileHobby.textContent = popupHobby.value;
 }
-save.addEventListener('click',editPopup);
+save.addEventListener('submit',handleFormSubmit);
 edit.addEventListener('click',openPopup);
 close.addEventListener('click',openPopup);

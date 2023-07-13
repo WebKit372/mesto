@@ -9,9 +9,11 @@
     box-sizing: border-box;
     border: none;
     transition: opacity 0.2s ease-in;
+    cursor: pointer;
+    border-radius: 2px;
 }
 .popup__save:hover{
-    opacity: .6;
+    opacity: .8;
 }
 @media screen and (max-width: 768px){
     .popup__save{
