@@ -8,12 +8,14 @@
     background-color: black;
     transition: opacity 0.2s ease-in;
     padding: 0;
+    box-sizing: border-box;
 }
 @media screen and (max-width: 320px){
     .profile__edit-button{
-    max-width: 18px;
-    max-height: 18px;
+    width: 18px;
+    height: 18px;
     margin-left: 10px;
+    margin-bottom: 7px;
     }
 }
 .profile__edit-button:hover{

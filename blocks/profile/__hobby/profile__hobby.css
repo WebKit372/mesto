@@ -15,14 +15,10 @@
     .profile__hobby{
         margin: auto;
         margin-top: 14px;
-    }
-}
-@media screen and (max-width: 320px){
-    .profile__hobby{
         font-size: 14px;
         font-weight: 400;
         line-height: 17px;
         letter-spacing: 0em;
-        max-width: 100%;        
+        max-width: 282px;        
     }
 }

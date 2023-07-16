@@ -83,17 +83,19 @@
                 <p class="footer__text">© 2023 Mesto Russia</p>
             </footer>
             <section class="popup">
-                <form class="popup__page" name='popup'>
+                <div class="popup__page">
                     <h2 class="popup__edit">Редактировать профиль</h2>
-                        <input type="text" class="popup__text" placeholder='qwdqwdqw' name="popup__name">
-                        <input class="popup__text" placeholder='wdqd' type="text" name="popup__hobby">
-                    <button type='submit' class="popup__save" name="popup__save">
-                        <p class="popup__save-text">Сохранить</p>
-                    </button>
-                    <button class='popup__close' type="button" name="popup__close">
+                    <form class="popup__form">
+                        <input type="text" class="popup__text" placeholder='qwdqwdqw' name="popup-name">
+                        <input class="popup__text" placeholder='wdqd' type="text" name="popup-hobby">
+                        <button type='submit' class="popup__save">
+                            <p class="popup__save-text">Сохранить</p>
+                        </button>
+                    </form>
+                    <button class='popup__close' type="button">
                     <img class="popup__close-icon" src="./images/Close Icon.svg" alt="Закрыть">
                     </button>
-                </form>
+                </div>
             </section>
         </div>
     </div>
