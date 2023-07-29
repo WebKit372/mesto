@@ -1,0 +1,6 @@
+.popup_img_active{
+    display: flex;
+    flex-direction: column;
+    visibility: visible;
+    opacity: 1;
+}

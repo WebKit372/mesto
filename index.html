@@ -29,54 +29,6 @@
                     </button>
                 </section>
                 <section class="elements">
-                    <div class="elements__element">
-                        <img class="elements__image" src="./images/Гучи_жаба.jpg" alt="Гучи жаба">
-                        <div class="elements__description">
-                            <h2 class="elements__text">Гучи жаба</h2>
-                            <button class="elements__button" type="button">
-                        </button>
-                        </div>
-                    </div>
-                    <div class="elements__element">
-                        <img class="elements__image" src="./images/Гучи_заправка.jpg" alt="Гучи заправка">
-                        <div class="elements__description">
-                            <h2 class="elements__text">Гучи заправка</h2>
-                            <button class="elements__button" type="button">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="elements__element">
-                        <img class="elements__image" src="./images/Гучи_ритер_спорт.jpg" alt="Гучи шоколадка">
-                        <div class="elements__description">
-                            <h2 class="elements__text">Гучи ритер спорт</h2>
-                            <button class="elements__button" type="button">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="elements__element">
-                        <img class="elements__image" src="./images/Гучи_собака.jpg" alt="Гучи собака">
-                        <div class="elements__description">
-                            <h2 class="elements__text">Гучи собака</h2>
-                            <button class="elements__button" type="button">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="elements__element">
-                        <img class="elements__image" src="./images/Гучи_хрюшка.jpg" alt="Гучи Хрюшка">
-                        <div class="elements__description">
-                            <h2 class="elements__text">Гучи хрюшка!</h2>
-                            <button class="elements__button" type="button">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="elements__element">
-                        <img class="elements__image" src="./images/Гучи_шанель.jpg" alt="Гучи шанель">
-                        <div class="elements__description">
-                            <h2 class="elements__text">Гучи chanel</h2>
-                            <button class="elements__button" type="button">
-                            </button>
-                        </div>
-                    </div>
                 </section>
             </main>
             <footer class="footer">
@@ -97,8 +49,46 @@
                     </button>
                 </div>
             </section>
+            <section class="popup popup_add">
+                <div class="popup__page popup__page_add">
+                    <h2 class="popup__edit popup__edit_add">Новое место</h2>
+                    <form class="popup__form popup__form_add" name="popup-form">
+                        <input type="text text_add" class="popup__text popup__text_add" placeholder='Название' name="popup-name">
+                        <input class="popup__text popup__text_add" placeholder='Ссылка на картинку' type="text" name="popup-hobby">
+                        <button type='submit submit_add' class="popup__save">
+                            Сохранить
+                        </button>
+                    </form>
+                    <button class='popup__close popup__close_add' type="button">
+                    <img class="popup__close-icon" src="./images/CloseIcon.svg" alt="Закрыть">
+                    </button>
+                </div>
+            </section>
+            <section class="popup_img">
+                <div class="popup_img__page">
+                    <img class="popup_img__img" src="" alt="Картинка">
+                    <h2 class="popup_img__text"></h2>
+                    <button class='popup_img__close' type="button">
+                    <img class="popup_img__close-icon" src="./images/CloseIcon.svg" alt="Закрыть">
+                    </button>
+                </div>
+            </section>
         </div>
     </div>
+    <template id="cards">
+        <div class="elements__element">
+            <button class="elements__image-button">
+            <img class="elements__image" alt="">
+            </button>
+            <div class="elements__description">
+                <h2 class="elements__text"></h2>
+                <button class="elements__button" type="button">
+                </button>
+            </div>
+            <button class="elements__trash" type="button">
+            </button>
+        </div>   
+    </template>
     <script src="./script/script.js">
     </script>
 </body>
