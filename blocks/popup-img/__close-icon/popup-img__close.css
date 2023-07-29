@@ -1,10 +1,10 @@
-.popup_img__close-icon{
+.popup-img__close-icon{
     max-width: 32px;
     height: 32px;
     opacity: 1;
 }
 @media screen and (max-width: 768px){
-    .popup_img__close-icon{
+    .popup-img__close-icon{
         width: 25px;
         height: 25px;
     }

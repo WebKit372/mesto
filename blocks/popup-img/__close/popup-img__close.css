@@ -1,4 +1,4 @@
-.popup_img__close{
+.popup-img__close{
     position: absolute;
     top:-40px;
     right:-40px;
@@ -8,12 +8,12 @@
     border: 0;
     transition: opacity 0.2s ease-in;
 }
-.popup_img__close:hover{
+.popup-img__close:hover{
     cursor: pointer;
     opacity: 0.6;
 }
 @media screen and (max-width: 768px){
-    .popup_img__close{
+    .popup-img__close{
         top: -40px;
         right: 0;
         width: 25px;
