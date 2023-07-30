@@ -38,8 +38,8 @@
                 <div class="popup__page">
                     <h2 class="popup__edit">Редактировать профиль</h2>
                     <form class="popup__form" name="popup-form">
-                        <input type="text" class="popup__text" placeholder='qwdqwdqw' name="popup-name">
-                        <input class="popup__text" placeholder='wdqd' type="text" name="popup-hobby">
+                        <input type="text" class="popup__text popup_name" placeholder='qwdqwdqw' name="popup-name">
+                        <input class="popup__text popup_hobby" placeholder='wdqd' type="text" name="popup-hobby">
                         <button type='submit' class="popup__save">
                             Сохранить
                         </button>
@@ -53,8 +53,8 @@
                 <div class="popup__page popup__page_add">
                     <h2 class="popup__edit popup__edit_add">Новое место</h2>
                     <form class="popup__form popup__form_add" name="popup-form">
-                        <input type="text text_add" class="popup__text popup__text_add" placeholder='Название' name="popup-name">
-                        <input class="popup__text popup__text_add" placeholder='Ссылка на картинку' type="text" name="popup-hobby">
+                        <input type="text text_add" class="popup__text popup__text_add popup__text_pic-name" placeholder='Название' name="popup-name">
+                        <input class="popup__text popup__text_add popup__text_pic" placeholder='Ссылка на картинку' type="text" name="popup-hobby">
                         <button type='submit submit_add' class="popup__save">
                             Сохранить
                         </button>
@@ -64,12 +64,12 @@
                     </button>
                 </div>
             </section>
-            <section class="popup-img">
-                <div class="popup-img__page">
-                    <img class="popup-img__img" alt="Картинка">
-                    <h2 class="popup-img__text"></h2>
-                    <button class='popup-img__close' type="button">
-                    <img class="popup-img__close-icon" src="./images/CloseIcon.svg" alt="Закрыть">
+            <section class="popup popup_img">
+                <div class="popup__page popup__page_img">
+                    <img class="popup__card" alt="Картинка">
+                    <h2 class="popup__text popup__text_img"></h2>
+                    <button class='popup__close popup__close_img' type="button">
+                    <img class="popup__close-icon" src="./images/CloseIcon.svg" alt="Закрыть">
                     </button>
                 </div>
             </section>
@@ -89,6 +89,8 @@
             </button>
         </div>   
     </template>
+    <script src="./script/script_massive.js">
+    </script>
     <script src="./script/script.js">
     </script>
 </body>
