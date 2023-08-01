@@ -19,7 +19,7 @@ const buttonCloseImage = document.querySelector('.popup__close_img');
 const popupCard = popupImage.querySelector('.popup__card');
 const popupTextImg = popupImage.querySelector('.popup__text_img');
 
-function changeVar(name,image){
+function createNewCardTemplate(name,image){
   const newCardsTemplate = cardsTemplate.querySelector('.elements__element').cloneNode(true);
   const text = newCardsTemplate.querySelector('.elements__text');
   const picture = newCardsTemplate.querySelector('.elements__image');
@@ -58,20 +58,20 @@ function editCardHandleFormSubmit(evt){
     profileName.textContent = popupName.value;
     profileHobby.textContent = popupHobby.value;
 }
-function addCard(Template){
-  cards.prepend(Template)
+function addCard(template){
+  cards.prepend(template)
 }
 function addCardHandleFormSubmit(evt){
   evt.preventDefault()
   const picName = pictureNameAdd.value;
   const picImage = pictureLinkAdd.value;
-  addCard(changeVar(picName,picImage));  
+  addCard(createNewCardTemplate(picName,picImage));  
   closePopup(popupAdd);
   pictureNameAdd.value = '';
   pictureLinkAdd.value = '';
 }
 initialCards.forEach(function(element){
- addCard(changeVar(element['name'],element['link']));
+ addCard(createNewCardTemplate(element['name'],element['link']));
 }); 
 buttonAdd.addEventListener('click',() => addPopup(popupAdd));
 buttonCloseAdd.addEventListener('click',() => closePopup(popupAdd));
