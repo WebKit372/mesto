@@ -44,9 +44,16 @@ function createNewCardTemplate(name,image){
 };
 function addPopup(popup){
   popup.classList.add('popup_active');
+  openPopupByEsc();
 }
 function closePopup(popup){
+  const formElement = document.querySelector('.popup_active');
+  if (formElement){
+  if (formElement.querySelector('.popup__form')){
+    deleteErrorMessages(formElement);}
+  }
   popup.classList.remove('popup_active');
+  closePopupByEsc();
 }
 function openEditPopup(){
   addPopup(popup);
@@ -77,6 +84,27 @@ function closeAllPopups(){
     closePopup(element)
   })
 }
+const deleteErrorMessages = (formElement) =>{
+  const inputList = Array.from(formElement.querySelectorAll('.popup__text'));
+  inputList.forEach((inputElement) =>{
+    hideInputError(formElement,inputElement);
+    })
+}
+const addEventListenerEsc = (evt) =>{
+  const formElement = document.querySelector('.popup_active');
+  if (evt.key =='Escape'){
+    closeAllPopups();
+    if (formElement.querySelector('.popup__form')){
+      deleteErrorMessages(formElement);
+  }
+}
+}
+const closePopupByEsc = () =>{
+  document.removeEventListener('keydown',addEventListenerEsc);
+}
+const openPopupByEsc = () => {
+  document.addEventListener('keydown',addEventListenerEsc);
+}
 initialCards.forEach(function(element){
  addCard(createNewCardTemplate(element['name'],element['link']));
 }); 
@@ -87,14 +115,15 @@ buttonEdit.addEventListener('click',openEditPopup);
 buttonCloseEdit.addEventListener('click',() => closePopup(popup));
 buttonCloseImage.addEventListener('click',() => closePopup(popupImage));
 buttonSaveAdd.addEventListener('submit',addCardHandleFormSubmit);
-document.addEventListener('keydown',function(evt){
-  if (evt.key =='Escape'){
-    closeAllPopups();
-  }
-});
-document.addEventListener('click',function(evt){
+document.addEventListener('mousedown',function(evt){
   const popupCheck = evt.target.classList.contains('popup')
+  if (document.querySelector('.popup_active')){
+  const formElement = document.querySelector('.popup_active');
     if (popupCheck){
       closeAllPopups();
+      if (formElement.querySelector('.popup__form')){
+        deleteErrorMessages(formElement);
     }
+    }
+  }
 });

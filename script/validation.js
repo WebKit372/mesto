@@ -1,3 +1,16 @@
+const hasInvalidInput = (inputList) =>{
+  return inputList.some((inputElement)=>{
+    return !inputElement.validity.valid;
+  })
+}
+const toggleButtonState = (inputList,buttonElement) =>{
+  if (hasInvalidInput(inputList)){
+    buttonElement.classList.add('popup__save_disabled');
+  }
+  else{
+    buttonElement.classList.remove('popup__save_disabled');
+  }
+}
 const showInputError= (formElement,inputElemet,errorMessage) => {
     const formError = formElement.querySelector(`.${inputElemet.id}-error`);
     inputElemet.classList.add('popup__text_error');
@@ -23,6 +36,8 @@ const showInputError= (formElement,inputElemet,errorMessage) => {
     inputList.forEach((inputElement) =>{
       inputElement.addEventListener('input',()=>{
         isValid(formElement,inputElement);
+        const buttonElement = formElement.querySelector('.popup__save');
+        toggleButtonState(inputList,buttonElement);
       })
     })
   }
