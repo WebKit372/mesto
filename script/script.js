@@ -1,6 +1,7 @@
-const popupEdit = document.querySelector('.popup');
+const popup = document.querySelector('.popup');
+const popupPage = document.querySelector('.popup__page');
 const buttonCloseEdit = document.querySelector('.popup__close');
-const buttonSaveEdit = document.querySelector('.popup__form');
+const popupFormEdit = document.querySelector('.popup__form');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const popupName = document.querySelector('.popup__text_name');
 const popupHobby = document.querySelector('.popup__text_hobby');
@@ -48,13 +49,13 @@ function closePopup(popup){
   popup.classList.remove('popup_active');
 }
 function openEditPopup(){
-  addPopup(popupEdit);
+  addPopup(popup);
     popupName.value = profileName.textContent;
     popupHobby.value = profileHobby.textContent;
 }
 function editCardHandleFormSubmit(evt){
     evt.preventDefault()
-    closePopup(popupEdit)
+    closePopup(popup)
     profileName.textContent = popupName.value;
     profileHobby.textContent = popupHobby.value;
 }
@@ -70,13 +71,30 @@ function addCardHandleFormSubmit(evt){
   pictureNameAdd.value = '';
   pictureLinkAdd.value = '';
 }
+function closeAllPopups(){
+  const popups = document.querySelectorAll('.popup')
+  popups.forEach(function(element){
+    closePopup(element)
+  })
+}
 initialCards.forEach(function(element){
  addCard(createNewCardTemplate(element['name'],element['link']));
 }); 
 buttonAdd.addEventListener('click',() => addPopup(popupAdd));
 buttonCloseAdd.addEventListener('click',() => closePopup(popupAdd));
-buttonSaveEdit.addEventListener('submit',editCardHandleFormSubmit);
+popupFormEdit.addEventListener('submit',editCardHandleFormSubmit);
 buttonEdit.addEventListener('click',openEditPopup);
-buttonCloseEdit.addEventListener('click',() => closePopup(popupEdit));
+buttonCloseEdit.addEventListener('click',() => closePopup(popup));
 buttonCloseImage.addEventListener('click',() => closePopup(popupImage));
 buttonSaveAdd.addEventListener('submit',addCardHandleFormSubmit);
+document.addEventListener('keydown',function(evt){
+  if (evt.key =='Escape'){
+    closeAllPopups();
+  }
+});
+document.addEventListener('click',function(evt){
+  const popupCheck = evt.target.classList.contains('popup')
+    if (popupCheck){
+      closeAllPopups();
+    }
+});

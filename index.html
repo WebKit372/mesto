@@ -37,9 +37,15 @@
             <section class="popup">
                 <div class="popup__page">
                     <h2 class="popup__edit">Редактировать профиль</h2>
-                    <form class="popup__form" name="popup-form">
-                        <input type="text" class="popup__text popup__text_name" placeholder='qwdqwdqw' name="popup-name">
-                        <input class="popup__text popup__text_hobby" placeholder='wdqd' type="text" name="popup-hobby">
+                    <form class="popup__form" name="popup-form" novalidate>
+                        <label class="popup__form-input">
+                        <input type="text" id='name-input' class="popup__text popup__text_name" placeholder='' name="popup-name" required minlength="2" maxlength="40">
+                        <span class="name-input-error popup__form-input-error">Необходимо заполнить это поле</span>
+                        </label>
+                        <label class="popup__form-input">
+                        <input class="popup__text popup__text_hobby" id='hobby-input' placeholder='' type="text" name="popup-hobby" required minlength="2" maxlength="200">
+                        <span class="hobby-input-error popup__form-input-error">Необходимо заполнить это поле</span>
+                        </label>
                         <button type='submit' class="popup__save">
                             Сохранить
                         </button>
@@ -52,9 +58,15 @@
             <section class="popup popup_add">
                 <div class="popup__page popup__page_add">
                     <h2 class="popup__edit popup__edit_add">Новое место</h2>
-                    <form class="popup__form popup__form_add" name="popup-form">
-                        <input type="text text_add" class="popup__text popup__text_add popup__text_pic-name" placeholder='Название' name="popup-name">
-                        <input class="popup__text popup__text_add popup__text_pic" placeholder='Ссылка на картинку' type="text" name="popup-hobby">
+                    <form class="popup__form popup__form_add" name="popup-form" novalidate>
+                        <label class="popup__form-input">
+                        <input type="text text_add" id="pic-name-input" class="popup__text popup__text_add popup__text_pic-name" placeholder='Название' name="popup-name"  required minlength="2" maxlength="30">
+                        <span class="pic-name-input-error popup__form-input-error">Необходимо заполнить это поле</span>
+                        </label>
+                        <label class="popup__form-input">
+                        <input id ="url-input" class="popup__text popup__text_add popup__text_pic" placeholder='Ссылка на картинку' type="url" name="popup-hobby">
+                        <span class="url-input-error popup__form-input-error">Необходимо заполнить это поле</span>
+                        </label>
                         <button type='submit submit_add' class="popup__save">
                             Сохранить
                         </button>
@@ -92,6 +104,8 @@
     <script src="./script/script_massive.js">
     </script>
     <script src="./script/script.js">
+    </script>
+    <script src="./script/validation.js">
     </script>
 </body>
 </html>
