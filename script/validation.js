@@ -6,6 +6,10 @@ const validationConfig ={
   inputErrorClass: 'popup__text_error',
   errorClass: 'popup__form-input-error_active'
 }; 
+const disableSubmitButton = (buttonElement,validationConfig) =>{
+  buttonElement.classList.add(validationConfig['inactiveButtonClass']);
+  buttonElement.setAttribute('disabled',true);
+}
 const hasInvalidInput = (inputList) =>{
   return inputList.some((inputElement)=>{
     return !inputElement.validity.valid;
@@ -13,8 +17,7 @@ const hasInvalidInput = (inputList) =>{
 }
 const toggleButtonState = (inputList,buttonElement,validationConfig) =>{
   if (hasInvalidInput(inputList)){
-    buttonElement.classList.add(validationConfig['inactiveButtonClass']);
-    buttonElement.setAttribute('disabled',true);
+    disableSubmitButton(buttonElement,validationConfig);
   }
   else{
     buttonElement.classList.remove(validationConfig['inactiveButtonClass']);
