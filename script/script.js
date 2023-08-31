@@ -1,7 +1,7 @@
 import { Card } from "./Card.js";
 import { initialCards } from "./initialCards.js";
-import { validationConfig } from "./validation.js";
-import { FormValidator } from "./validation.js";
+import { validationConfig } from "./FormValidator.js";
+import { FormValidator } from "./FormValidator.js";
 const popupEdit = document.querySelector('.popup_edit');
 const buttonCloseEdit = document.querySelector('.popup__close_edit');
 const popupFormEdit = document.querySelector('.popup__form_edit');
@@ -29,20 +29,17 @@ class FormValidatorPopup extends FormValidator{
     })
   }
 }
-const EditPopupValidation = new FormValidatorPopup(validationConfig,popupEdit);
-const AddCardPopupvalidation = new FormValidatorPopup(validationConfig,popupAdd);
-AddCardPopupvalidation.enableValidation();
-EditPopupValidation.enableValidation();
-class CardWithEsc extends Card{
-  _handleOpenPopup(){
-    super._handleOpenPopup();
-    setClosePopupByEscListener();
-}
+const validatorEditProfile = new FormValidatorPopup(validationConfig,popupEdit);
+const validatorAddCard = new FormValidatorPopup(validationConfig,popupAdd);
+validatorAddCard.enableValidation();
+validatorEditProfile.enableValidation();
+const createCard = (text,image,templateSelector,openPopup) =>{
+  const cardNew = new Card(text,image,templateSelector,openPopup);
+  const newCard = cardNew.generateCard()
+  addCard(newCard);
 }
 initialCards.forEach(function(element){
-  const CardNew = new CardWithEsc(element['name'],element['link'],'#cards');
-  const NewCard = CardNew.generateCard()
-  addCard(NewCard);
+  createCard(element['name'],element['link'],'#cards',openPopup);
  });
 function openPopup(popup){
   popup.classList.add('popup_active');
@@ -55,7 +52,7 @@ function closePopup(popup){
 function openEditPopup(){
   popupName.value = profileName.textContent;
   popupHobby.value = profileHobby.textContent;
-  EditPopupValidation.deleteErrorMessages();
+  validatorEditProfile.deleteErrorMessages();
   openPopup(popupEdit);
 }
 function handleEditProfileFormSubmit(evt){
@@ -71,12 +68,9 @@ function handleAddCardFormSubmit(evt){
   evt.preventDefault()
   const picName = pictureNameAdd.value;
   const picImage = pictureLinkAdd.value;
-  const CardNew = new CardWithEsc(picName,picImage,'#cards');
-  const NewCard = CardNew.generateCard()
-  addCard(NewCard);  
+  createCard(picName,picImage,'#cards',openEditPopup); 
   closePopup(popupAdd);
-  pictureNameAdd.value = '';
-  pictureLinkAdd.value = '';
+  popupFormAdd.reset()
 }
 function closeOpenedPopup(){
   const openedPopup = document.querySelector('.popup_active')
@@ -96,7 +90,7 @@ const setClosePopupByEscListener = () => {
 }
 buttonAdd.addEventListener('click',() => {
   openPopup(popupAdd);
-  AddCardPopupvalidation.deleteErrorMessages();
+  validatorAddCard.deleteErrorMessages();
 });
 buttonCloseAdd.addEventListener('click',() => closePopup(popupAdd));
 popupFormEdit.addEventListener('submit',handleEditProfileFormSubmit);

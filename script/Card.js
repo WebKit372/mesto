@@ -2,10 +2,11 @@ const popupElement = document.querySelector('.popup_img');
 const popupImage = popupElement.querySelector('.popup__card');
 const popupText = popupElement.querySelector('.popup__text_img');
 export class Card{
-    constructor(text,image,templateSelector){
+    constructor(text,image,templateSelector,openPopup){
         this._text = text;
         this._image = image;
         this._templateSelector = templateSelector;
+        this._openPopup = openPopup;
     }
     _getTemplate(){
         const cardElement = document
@@ -37,12 +38,12 @@ export class Card{
     }
     _addTrashbuttonListener(){
         this._element.querySelector('.elements__trash').addEventListener('click',function(evt){
-            const DeletedElement = evt.target.closest('.elements__element');
-            DeletedElement.remove();
+            const deletedElement = evt.target.closest('.elements__element');
+            deletedElement.remove();
           })
     }
     _handleOpenPopup(){
-        popupElement.classList.add('popup_active');
+        this._openPopup(popupElement);
         popupImage.src = this._image;
         popupText.textContent = this._text;
         popupImage.alt = this._text;
