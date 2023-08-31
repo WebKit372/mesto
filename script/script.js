@@ -68,7 +68,7 @@ function handleAddCardFormSubmit(evt){
   evt.preventDefault()
   const picName = pictureNameAdd.value;
   const picImage = pictureLinkAdd.value;
-  createCard(picName,picImage,'#cards',openEditPopup); 
+  createCard(picName,picImage,'#cards',openPopup); 
   closePopup(popupAdd);
   popupFormAdd.reset()
 }
