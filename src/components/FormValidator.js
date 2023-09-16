@@ -1,11 +1,3 @@
-export const validationConfig ={
-  formSelector: '.popup__form',
-  inputSelector: '.popup__text',
-  submitButtonSelector: '.popup__save',
-  inactiveButtonClass: 'popup__save_disabled',
-  inputErrorClass: 'popup__text_error',
-  errorClass: 'popup__form-input-error_active'
-}; 
 export class FormValidator{
   constructor(validationConfig,formElement){
     this._validationConfig = validationConfig;
@@ -63,14 +55,10 @@ _setEventListener(){
 enableValidation(){
     this._setEventListener();
 }
-openEditPopup(){
-  popupName.value = profileName.textContent;
-  popupHobby.value = profileHobby.textContent;
-  validatorEditProfile.deleteErrorMessages();
-  openPopup(popupEdit);
-  this.__toggleButtonState();
-  this._inputList.forEach((inputElement) =>{
-  this._hideInputError(inputElement)
-  })
-}
+  deleteErrorMessages(){
+    this._toggleButtonState()
+    this._inputList.forEach((inputElement) =>{
+      this._hideInputError(inputElement)
+    })
+  }
 }

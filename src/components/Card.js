@@ -1,12 +1,9 @@
-const popupElement = document.querySelector('.popup_img');
-const popupImage = popupElement.querySelector('.popup__card');
-const popupText = popupElement.querySelector('.popup__text_img');
 export class Card{
-    constructor(text,image,templateSelector,openPopup){
+    constructor(text,image,templateSelector,handleCardClick){
         this._text = text;
         this._image = image;
         this._templateSelector = templateSelector;
-        this._openPopup = openPopup;
+        this._handleCardClick = handleCardClick;
     }
     _getTemplate(){
         const cardElement = document
@@ -42,15 +39,9 @@ export class Card{
             deletedElement.remove();
           })
     }
-    _handleOpenPopup(){
-        this._openPopup(popupElement);
-        popupImage.src = this._image;
-        popupText.textContent = this._text;
-        popupImage.alt = this._text;
-    }
     _addImageButtonListener(){
         this._element.querySelector('.elements__image-button').addEventListener('click',()=>{
-            this._handleOpenPopup();
+            this._handleCardClick();
         })
     }
 }
