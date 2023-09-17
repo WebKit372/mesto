@@ -17,9 +17,11 @@ export class Card{
     }
     generateCard(){
         this._element = this._getTemplate();
-        this._element.querySelector('.elements__text').textContent = this._text;
-        this._element.querySelector('.elements__image').src = this._image;
-        this._element.querySelector('.elements__image').alt = this._text;
+        this._cardImage = this._element.querySelector('.elements__image');
+        this._cardName = this._element.querySelector('.elements__text');
+        this._cardName.textContent = this._text;
+        this._cardImage.src = this._image;
+        this._cardImage.alt = this._text;
         this._setEventListeners()
         return this._element;
     }

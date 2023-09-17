@@ -26,11 +26,10 @@ export default class Popup{
         this._closeButton.addEventListener('click',this.close.bind(this));
         this._element.addEventListener('mousedown', evt=>{
             const popupCheck = evt.target.classList.contains('popup');
-            if (document.querySelector('.popup_active')){
                 if (popupCheck){
                   this.close();
                 }
-              }
+              
         })
     }
 } 

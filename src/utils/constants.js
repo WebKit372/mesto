@@ -38,3 +38,4 @@ export const validationConfig ={
 }; 
 export const popupAddForm = document.querySelector('.popup_add');
 export const popupEditForm = document.querySelector('.popup_edit');
+export const formValidators ={}

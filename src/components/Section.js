@@ -2,7 +2,7 @@ export default class Section{
     constructor({items,renderer},selector){
         this._items = items;
         this._renderer = renderer;
-        this._selector = document.querySelector(selector);
+        this._parentElement = document.querySelector(selector);
     }
     renderItems(){
         this._items.forEach((item)=>{
@@ -13,6 +13,6 @@ export default class Section{
         this._renderer(card);
     }
     addItem(element){
-        this._selector.prepend(element)
+        this._parentElement.prepend(element)
     }
 }
