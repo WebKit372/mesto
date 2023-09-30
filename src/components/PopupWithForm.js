@@ -4,6 +4,7 @@ export class PopupWithForm extends Popup{
         super(selector);
         this._callback = callback;
         this._popupForm = this._element.querySelector('.popup__form');
+        this._submitButton = this._element.querySelector('.popup__save');
     }
     // Создаю и возвращаю объект с информацией по каждому инпуту внутри попапа
     _getInputValues(){
@@ -13,13 +14,22 @@ export class PopupWithForm extends Popup{
         })
         return this._inputValues;
     }
+    renderLoader(isLoading){
+        if(isLoading == true){
+            this._submitButton.textContent = "Сохранение..."
+        }
+        else{
+            setTimeout(()=>{this._submitButton.textContent = "Сохранить"},300);
+            this.close();
+        }
+    }
     // Перегружаю метод присваивания слушателей, добавлю закрытие при отправке формы
     setEventListeners(){
         super.setEventListeners();
         this._popupForm.addEventListener('submit',(evt)=>{
             evt.preventDefault();
+            this.renderLoader(true);
             this._callback(this._getInputValues());
-            this.close();
         })
     }
     // При закрытии попапа форма сбрасывается

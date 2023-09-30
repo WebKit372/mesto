@@ -3,8 +3,8 @@
     z-index: 1;
     width: 18px;
     height: 19px;
-    top: 20px;
-    right: 20px;
+    top: 17px;
+    right: 15px;
     background: none;
     background-image: url(../../../images/Trash.svg);
     transition: opacity 0.2s ease-in-out;

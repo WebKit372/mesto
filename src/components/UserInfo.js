@@ -1,7 +1,8 @@
 export default class UserInfo{
-    constructor({userNameSelector, userHobbySelector}){
+    constructor({userNameSelector, userHobbySelector,avatarSelector}){
         this._userNameElement = document.querySelector(userNameSelector);
         this._userHobbyElement = document.querySelector(userHobbySelector);
+        this._avatarElement = document.querySelector(avatarSelector);
     }
     getUserInfo(){
         this._userInfo = {
@@ -13,5 +14,8 @@ export default class UserInfo{
     setUserInfo(name,hobby){
         this._userNameElement.textContent = name;
         this._userHobbyElement.textContent = hobby;
+    }
+    updateAvatar(URL){
+        this._avatarElement.style.backgroundImage =`url(${URL})`;
     }
 }

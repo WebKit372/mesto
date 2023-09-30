@@ -4,11 +4,11 @@
     position: relative;
     width: 100%;
 }
-.popup__form-input:first-of-type{
-    margin: 50px 0 0;
-}
 .popup__form-input:last-of-type{
     margin: 30px 0 0;
+}
+.popup__form-input:first-of-type{ 
+    margin: 50px 0 0;
 }
 @media screen and (max-width: 768px){
     .popup__form-input:first-of-type{
