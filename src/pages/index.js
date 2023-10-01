@@ -31,7 +31,7 @@ const userInfoClass = new UserInfo(
     userHobbySelector:'.profile__hobby'
   }
 );
-const popupEdit = new PopupWithForm(
+const popupEditProfile = new PopupWithForm(
   '.popup_edit',
   (inputValues)=>{
     apiProfile.updateProfileInfo(inputValues)
@@ -39,10 +39,10 @@ const popupEdit = new PopupWithForm(
         userInfoClass.setUserInfo(result['name'],result['about'])
     })
     .catch((err)=>console.log(err))
-    .finally(()=>popupEdit.renderLoader(false))
+    .finally(()=>popupEditProfile.renderLoader(false))
   }
 )
-const popupAdd = new PopupWithForm(
+const popupAddCard = new PopupWithForm(
   '.popup_add',
   (inputValues)=>{
     apiCards.addCard(inputValues)
@@ -50,7 +50,7 @@ const popupAdd = new PopupWithForm(
         sectionCard.renderUniqueItem(result);
     })
     .catch((err)=>console.log(err))
-    .finally(()=>popupAdd.renderLoader(false))
+    .finally(()=>popupAddCard.renderLoader(false))
   }
 )
 const popupAvatarUpdate = new PopupWithForm(
@@ -101,8 +101,12 @@ Promise.all([
           (deletedElement) => {
             trashButtonPopup.open();
             trashButtonPopup.setDynamicListener(()=>{
-              apiCards.deleteCard(card._id);
-              deletedElement.remove()
+              apiCards.deleteCard(card._id)
+              .then(()=>{
+                deletedElement.remove();
+                trashButtonPopup.close()
+              })
+              .catch(err=>console.log(err));
             });
           },
           ()=>apiCards.addLike(item["_id"])
@@ -122,18 +126,18 @@ Promise.all([
   })
 imagePopup.setEventListeners();
 trashButtonPopup.setEventListeners()
-popupEdit.setEventListeners();
-popupAdd.setEventListeners();
+popupEditProfile.setEventListeners();
+popupAddCard.setEventListeners();
 popupAvatarUpdate.setEventListeners();
 buttonEdit.addEventListener('click',()=>{
-    popupEdit.open();
+  popupEditProfile.open();
     const {hobby,name} = userInfoClass.getUserInfo();
     hobbyInput.value =  hobby;
     nameInput.value = name;
     formValidators['popup-form-edit'].deleteErrorMessages();
 });
 buttonAdd.addEventListener('click',()=>{
-    popupAdd.open();
+  popupAddCard.open();
     formValidators['popup-form-add'].deleteErrorMessages();
 })
 buttonAvatarUpdate.addEventListener('click',()=>{

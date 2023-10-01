@@ -13,12 +13,14 @@ export default class Api {
         }
     }
     deleteCard(cardId){
-      fetch(`${this._URL}/${cardId}`,{
+      return fetch(`${this._URL}/${cardId}`,{
         method:"DELETE",
         headers:{
             authorization:this._token}
         })
-        .catch((err)=>console.log(err))
+        .then((res)=> {
+          return this._getJSON(res)
+      })
     }
     getMyInfo(){
         return fetch(this._URL,{

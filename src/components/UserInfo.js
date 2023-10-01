@@ -12,10 +12,16 @@ export default class UserInfo{
         return this._userInfo;
     }
     setUserInfo(name,hobby){
-        this._userNameElement.textContent = name;
-        this._userHobbyElement.textContent = hobby;
+        if(name){
+            this._userNameElement.textContent = name;
+        }
+        if(hobby){
+            this._userHobbyElement.textContent = hobby;
+        }
     }
     updateAvatar(URL){
-        this._avatarElement.style.backgroundImage =`url(${URL})`;
+        if(URL){
+            this._avatarElement.style.backgroundImage =`url(${URL})`;
+        }
     }
 }

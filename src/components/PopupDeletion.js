@@ -7,7 +7,6 @@ export default class popupDeletion extends Popup{
     setDynamicListener(callback){
         this._button.addEventListener('click',()=>{
             callback();
-            this.close();
         })
     }
 }
